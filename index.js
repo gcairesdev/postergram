@@ -7,9 +7,9 @@ require('dotenv').config()
 
 const port = process.env.PORT || 4000
 
-let photoNumber = 48;
+let photoNumber = 1;
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 19 * * 4', async () => {
     const cookieStore = new FileCookieStore('./cookies.json');
 
     const client = new Instagram(
