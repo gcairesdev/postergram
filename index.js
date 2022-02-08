@@ -24,9 +24,27 @@ const login = async () => {
 
     await client.login().then(() => {
         console.log('Login successful!');
+        post();
     }).catch((err) => {
         console.log('Login failed!');
         console.log(err);
+    });
+};
+
+const post = async () => {
+    await client.uploadPhoto({
+        photo: './img/1.jpg',
+        caption: 'Legenda',
+        post: 'feed'
+    }).then(async (res) => {
+        const media = res.media;
+
+        console.log(`https://instagram.com/p/${media.code}`);
+
+        await client.addComment({
+            mediaId: media.id,
+            text: "Comentário"
+        });
     });
 };
 
