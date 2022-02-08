@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "instagram-web-api": "^2.2.2",
     "tough-cookie-filestore2": "^1.0.0"
