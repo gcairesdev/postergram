@@ -10,21 +10,15 @@ const port = process.env.PORT || 4000
 
 cron.schedule('0 19 * * 4', async () => {
     const cookieStore = new FileCookieStore('./cookies.json');
-
-    const client = new Instagram(
-        {
-            username: process.env.INSTAGRAM_USERNAME,
-            password: process.env.INSTAGRAM_PASSWORD,
-            cookieStore,
-        },
-        {
-            language: 'en-US',
-        }
-    );
+    const credentials = {
+        username: process.env.INSTAGRAM_USERNAME,
+        password: process.env.INSTAGRAM_PASSWORD,
+        cookieStore
+    };
+    const client = new Instagram(credentials, { language: 'en-US' });
 
     const login = async () => {
         console.log('Loggin in...');
-
         await client.login().then(() => {
             console.log('Login successful!');
             post();
