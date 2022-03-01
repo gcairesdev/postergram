@@ -7,8 +7,6 @@ require('dotenv').config()
 
 const port = process.env.PORT || 4000
 
-let photoNumber = 1;
-
 cron.schedule('0 19 * * 4', async () => {
     const cookieStore = new FileCookieStore('./cookies.json');
 
@@ -37,15 +35,18 @@ cron.schedule('0 19 * * 4', async () => {
 
     const post = async () => {
         await client.uploadPhoto({
-            photo: `./img/${photoNumber}.jpg`,
+            photo: `./img/${randomIntFromInterval(1, 50)}.jpg`,
             caption: '',
             post: 'feed'
         }).then(async (res) => {
             const media = res.media;
             console.log(`https://instagram.com/p/${media.code}`);
-            photoNumber = photoNumber == 48 ? 1 : photoNumber + 1;
         });
     };
+
+    const randomIntFromInterval = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
 
     login();
 });
