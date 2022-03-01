@@ -1,10 +1,11 @@
+const dotenv = require('dotenv');
+const cron = require('node-cron');
 const express = require('express');
-const app = express();
 const Instagram = require('instagram-web-api');
 const FileCookieStore = require('tough-cookie-filestore2');
-const cron = require('node-cron');
-require('dotenv').config()
 
+dotenv.config()
+const app = express();
 const port = process.env.PORT || 4000
 
 cron.schedule('0 19 * * 4', async () => {
