@@ -49,6 +49,20 @@ Clone o repositório:
 git clone https://github.com/gcairesdev/postergram
 ```
 
+Copie e edit o .env:
+
+```sh
+cp .env.example .env
+```
+
+Coloque suas imagens na pasta /img:
+
+```
+img/bird.jpg
+img/skye.jpg
+img/me.jpg
+```
+
 Execute o projeto:
 
 ```sh
